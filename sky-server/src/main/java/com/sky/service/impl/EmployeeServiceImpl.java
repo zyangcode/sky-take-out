@@ -48,7 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             //账号不存在
             throw new AccountNotFoundException(MessageConstant.ACCOUNT_NOT_FOUND);
         }
-        //password = DigestUtils.md5DigestAsHex(password.getBytes());
+        password = DigestUtils.md5DigestAsHex(password.getBytes());
         //密码比对
         //进行md5加密，然后再进行比对
         if (!password.equals(employee.getPassword())) {
@@ -73,27 +73,18 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void save(EmployeeDTO employeeDTO) {
-//        Employee employee = new Employee();
-////属性拷贝
-//        BeanUtils.copyProperties(employeeDTO, employee);
-////账号状态默认为1，正常状态
-//        employee.setStatus(StatusConstant.ENABLE);
-////默认密码为123456
-//        employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
-////创建人、创建时间、修改人、修改时间
+        Employee employee = new Employee();
+        //属性拷贝
+        BeanUtils.copyProperties(employeeDTO, employee);
+        //账号状态默认为1，正常状态
+        employee.setStatus(StatusConstant.ENABLE);
+        //默认密码为123456
+        employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
+        //创建人、创建时间、修改人、修改时间
 //        employee.setCreateTime(LocalDateTime.now());
 //        employee.setUpdateTime(LocalDateTime.now());
-//        employee.setCreateUser(10L);
-//        employee.setUpdateUser(10L);
-//        employeeMapper.insert(employee);
-        Employee employee = new Employee();
-        BeanUtils.copyProperties(employeeDTO, employee);
-        employee.setStatus(StatusConstant.ENABLE);
-        employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setCreateUser(BaseContext.getCurrentId());
-        employee.setUpdateUser(BaseContext.getCurrentId());
+//        employee.setCreateUser(BaseContext.getCurrentId());
+//        employee.setUpdateUser(BaseContext.getCurrentId());
         employeeMapper.insert(employee);
 
     }
@@ -154,8 +145,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void update(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO, employee);
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setUpdateUser(BaseContext.getCurrentId());
+//        employee.setUpdateTime(LocalDateTime.now());
+//        employee.setUpdateUser(BaseContext.getCurrentId());
         employeeMapper.update(employee);
     }
 
