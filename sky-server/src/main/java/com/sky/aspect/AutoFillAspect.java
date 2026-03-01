@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 @Component
 @Slf4j
 
-public class AutoFillAspect {
+public class  AutoFillAspect {
     /**
      * 拦截需要自动填充的方法   切入点
      */

@@ -4,17 +4,17 @@ sky:
     host: localhost
     port: 3306
     database: sky_take_out
-    username: 【填写数据库的账号】
-    password: 【填写数据库的密码】
+    username: root
+    password:
   alioss:
     endpoint: oss-cn-beijing.aliyuncs.com
-    access-key-id: 【填写阿里云账号的AccessKeyId】
-    access-Key-Secret: 【填写阿里云账号的AccessKeySecret】
+    access-key-id:
+    access-Key-Secret:
     bucket-name: java-cangqiongwaimai-wyz
   redis:
     host: localhost
     port: 6379
     database: 10
   wechat:
-    appid: 【填写微信小程序的appid】
-    secret: [填写微信小程序的appSecret]
+    appid:
+    secret:
